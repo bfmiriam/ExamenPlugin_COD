@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.miriam.plugincod;
 
 import java.awt.event.ActionEvent;
@@ -26,10 +22,15 @@ import org.openide.util.NbBundle.Messages;
 @ActionReference(path = "Menu/Versioning", position = 0)
 @Messages("CTL_Ejecutar=Ejecutar")
 public final class Ejecutar implements ActionListener {
-
+    /**
+     * En esta clase añadimos el código necesario para empaquetar un programa
+     * @param e 
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        /*
+        Comando con los datos del programa
+        */
         String comando = "javapackager -deploy -native deb -Bcategory=Education "
                 + "-Bicon="+JOptionPane.showInputDialog("path de la imagen") 
                 + " -BlicenseType=Propietary -outdir "+JOptionPane.showInputDialog("Introduce ruta")+" -outfile "+ 
@@ -42,7 +43,7 @@ public final class Ejecutar implements ActionListener {
         
         try {
             Runtime rt = Runtime.getRuntime();
-            //Process pr = rt.exec("cmd /c dir");
+            
             Process pr = rt.exec(comando);
 
             BufferedReader input = new BufferedReader(new InputStreamReader(pr.getInputStream()));
